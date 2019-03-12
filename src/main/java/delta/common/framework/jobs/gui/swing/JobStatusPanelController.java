@@ -92,6 +92,9 @@ public class JobStatusPanelController
     return panel;
   }
 
+  /**
+   * Update the display of the job status.
+   */
   public void updateDisplay()
   {
     int nbItemsData=_status.getNumberOfLevels();

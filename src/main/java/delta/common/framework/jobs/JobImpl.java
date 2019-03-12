@@ -14,6 +14,7 @@ public interface JobImpl
   
   /**
    * Perform the job.
+   * @param support Provides access to facilities to be used by this implementation.
    */
   void doIt(JobSupport support);
 

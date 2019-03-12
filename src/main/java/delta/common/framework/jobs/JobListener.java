@@ -1,6 +1,7 @@
 package delta.common.framework.jobs;
 
 /**
+ * Job listener.
  * @author DAM
  */
 public interface JobListener
@@ -17,5 +18,9 @@ public interface JobListener
    */
   public void jobFinished(Job job);
 
+  /**
+   * Callback method invoked when the status of the job has been updated.
+   * @param job Involved job.
+   */
   public void jobStatusUpdated(Job job);
 }
