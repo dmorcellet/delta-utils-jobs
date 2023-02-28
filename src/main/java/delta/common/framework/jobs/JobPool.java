@@ -6,8 +6,6 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import delta.common.utils.traces.UtilsLoggers;
-
 /**
  * Represents a pool of jobs.
  * Such a pool manages :
@@ -19,7 +17,7 @@ import delta.common.utils.traces.UtilsLoggers;
  */
 public class JobPool
 {
-  private static final Logger _logger=UtilsLoggers.getUtilsLogger();
+  private static final Logger LOGGER=Logger.getLogger(JobPool.class);
 
   /**
    * List of jobs to be executed.
@@ -74,7 +72,7 @@ public class JobPool
           }
           catch(InterruptedException ie)
           {
-            _logger.error("Wait interrupted !",ie);
+            LOGGER.error("Wait interrupted !",ie);
           }
           //System.out.println(Thread.currentThread().getName()+" : end of wait !");
         }
@@ -112,7 +110,7 @@ public class JobPool
       }
       catch(Throwable t)
       {
-        _logger.error("Error in add callback for job ["+job.getLabel()+"]");
+        LOGGER.error("Error in add callback for job ["+job.getLabel()+"]");
       }
     }
     notify();
@@ -128,7 +126,7 @@ public class JobPool
   {
     if (job.getState()!=JobState.TO_DO)
     {
-      _logger.error("Starting job ["+job.getLabel()+"] in state ["+job.getState()+"]");
+      LOGGER.error("Starting job ["+job.getLabel()+"] in state ["+job.getState()+"]");
     }
     job.setState(JobState.RUNNING);
     _reserved.remove(job);
@@ -143,7 +141,7 @@ public class JobPool
       }
       catch(Throwable t)
       {
-        _logger.error("Error in start callback for job ["+job.getLabel()+"]");
+        LOGGER.error("Error in start callback for job ["+job.getLabel()+"]");
       }
     }
     notify();
@@ -158,7 +156,7 @@ public class JobPool
   {
     if (job.getState()!=JobState.RUNNING)
     {
-      _logger.error("Finished job ["+job.getLabel()+"] in state ["+job.getState()+"]");
+      LOGGER.error("Finished job ["+job.getLabel()+"] in state ["+job.getState()+"]");
     }
     job.setState(JobState.FINISHED);
     _running.remove(job);
@@ -173,7 +171,7 @@ public class JobPool
       }
       catch(Throwable t)
       {
-        _logger.error("Error in finished callback for job ["+job.getLabel()+"]");
+        LOGGER.error("Error in finished callback for job ["+job.getLabel()+"]");
       }
     }
     notify();
@@ -201,7 +199,7 @@ public class JobPool
         }
         catch(Throwable t)
         {
-          _logger.error("Error in removed callback for job ["+job.getLabel()+"]");
+          LOGGER.error("Error in removed callback for job ["+job.getLabel()+"]");
         }
       }
     }

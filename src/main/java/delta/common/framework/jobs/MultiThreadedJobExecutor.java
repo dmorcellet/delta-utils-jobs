@@ -2,15 +2,13 @@ package delta.common.framework.jobs;
 
 import org.apache.log4j.Logger;
 
-import delta.common.utils.traces.UtilsLoggers;
-
 /**
  * Controller used to execute jobs on a pool of threads.
  * @author DAM
  */
 public class MultiThreadedJobExecutor
 {
-  private static final Logger _logger=UtilsLoggers.getUtilsLogger();
+  private static final Logger LOGGER=Logger.getLogger(MultiThreadedJobExecutor.class);
 
   private JobPool _pool;
   private int _nbThreads;
@@ -26,12 +24,12 @@ public class MultiThreadedJobExecutor
   {
     if (nbThreads<=0)
     {
-      _logger.warn("Corrected specified number of thread ("+nbThreads+"->1");
+      LOGGER.warn("Corrected specified number of thread ("+nbThreads+"->1");
       nbThreads=1;
     }
     if (nbThreads>10)
     {
-      _logger.warn("Corrected specified number of thread ("+nbThreads+"->10");
+      LOGGER.warn("Corrected specified number of thread ("+nbThreads+"->10");
       nbThreads=10;
     }
     _nbThreads=nbThreads;
@@ -105,7 +103,7 @@ public class MultiThreadedJobExecutor
         }
         catch(InterruptedException iE)
         {
-          _logger.error("",iE);
+          LOGGER.error("",iE);
         }
       }
     }
