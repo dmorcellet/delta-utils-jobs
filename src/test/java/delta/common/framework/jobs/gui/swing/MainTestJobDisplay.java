@@ -4,18 +4,20 @@ import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.WindowConstants;
 
 import delta.common.framework.jobs.SimpleJobStatus;
 import delta.common.framework.jobs.SimpleJobStatus.SimpleJobLevelStatus;
-import delta.common.framework.jobs.gui.swing.JobStatusPanelController;
 
 /**
+ * Test job display.
  * @author DAM
  */
-public class MainTestNewJob
+public class MainTestJobDisplay
 {
   /**
-   * @param args
+   * Main method for this test.
+   * @param args Not used.
    */
   public static void main(String[] args)
   {
@@ -37,6 +39,6 @@ public class MainTestNewJob
     frame.getContentPane().add(panel,BorderLayout.CENTER);
     frame.pack();
     frame.setVisible(true);
-    frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
   }
 }
